@@ -190,10 +190,10 @@ t = linspace(0,synthDuration,44100*synthDuration);
 synthArray = sin(pitch*2*pi*t);
 
 %if user chooses wave shape
-if waveShape== 'Square';
-    synthArray= square(synthArray);
-elseif waveShape== 'No Wave Shape';
-    synthArray= synthArray
+if waveShape== 1;
+    synthArray= synthArray;
+elseif waveShape== 2;
+    synthArray= square(synthArray);          
 end
 
     
