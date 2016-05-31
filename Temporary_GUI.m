@@ -198,7 +198,7 @@ if waveShape== 1;
 elseif waveShape== 2;
     synthArray= square(synthArray)*synthVolume;
 elseif waveShape ==3;
-    synthArray= sawtooth(synthArray)*synthVolume;
+    synthArray= tripuls(synthArray)*synthVolume;
 end
 
     
