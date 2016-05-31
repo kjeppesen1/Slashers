@@ -22,7 +22,7 @@ function varargout = Temporary_GUI(varargin)
 
 % Edit the above text to modify the response to help Temporary_GUI
 
-% Last Modified by GUIDE v2.5 31-May-2016 09:55:24
+% Last Modified by GUIDE v2.5 31-May-2016 16:36:27
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -142,11 +142,13 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
 end
 
 
-% --- Executes on button press in pushbutton5.
-function pushbutton5_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton5 (see GCBO)
+% --- Executes on button press in generateButton.
+function generateButton_Callback(hObject, eventdata, handles)
+% hObject    handle to generateButton (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+
+global S1File S2File S3File S4File S5File S6File S7File S8File S9File S10File S11File S12File S13File S14File S15File S16File ;
 
 %Get user's input for length of tone
 synthDuration= get(handles.edit4,'String');
@@ -185,7 +187,7 @@ pitch=440*2^((n-49)/12);
 % Set the sample rate to 44.1kHz
 fs=44100;
 
-synthVolume= get(handles.slider1,'Value');
+synthVolume= get(handles.synthVol,'Value');
 
 
 %create a sine wave
@@ -201,9 +203,44 @@ elseif waveShape ==3;
     synthArray= tripuls(synthArray)*synthVolume;
 end
 
+
+switch get(handles.sampleSelectorMenu,'Value');
+    case 1
+        S1File= audiowrite('S1File.wav', synthArray,fs);
+    case 2 
+        S2File= audiowrite('S2File.wav',synthArray,fs);
+    case 3
+        S3File= audiowrite('S3File.wav',synthArray,fs);
+    case 4
+        S4File= audiowrite('S4File.wav',synthArray,fs);
+    case 5
+        S5File= audiowrite('S5File.wav',synthArray,fs);        
+    case 6
+        S6File= audiowrite('S6File.wav',synthArray,fs);    
+    case 7
+        S7File= audiowrite('S7File.wav',synthArray,fs);
+    case 8
+        S8File= audiowrite('S8File.wav',synthArray,fs);
+    case 9
+        S9File= audiowrite('S9File.wav',synthArray,fs);        
+    case 10
+        S10File= audiowrite('S10File.wav',synthArray,fs);
+    case 11
+        S11File= audiowrite('S11File.wav',synthArray,fs);        
+    case 12
+        S12File= audiowrite('S12File.wav',synthArray,fs);  
+    case 13
+        S13File= audiowrite('S13File.wav',synthArray,fs);
+    case 14
+        S14File= audiowrite('S14File.wav',synthArray,fs);
+    case 15
+        S15File= audiowrite('S15File.wav',synthArray,fs);        
+    case 16
+        S16File= audiowrite('S16File.wav',synthArray,fs); 
+end
     
 % If the preview checkbox is checked, play the tone
-if handles.checkbox3~=0
+if handles.previewBox~=0
     sound(synthArray,fs);
 end
 
@@ -216,14 +253,14 @@ function pushbutton6_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 
-% --- Executes on button press in checkbox3.
-function checkbox3_Callback(hObject, eventdata, handles)
-% hObject    handle to checkbox3 (see GCBO)
+% --- Executes on button press in previewBox.
+function previewBox_Callback(hObject, eventdata, handles)
+% hObject    handle to previewBox (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hint: get(hObject,'Value') returns toggle state of checkbox3
-handles.checkbox3=get(hObject,'Value');
+% Hint: get(hObject,'Value') returns toggle state of previewBox
+handles.previewBox=get(hObject,'Value');
 guidata(hObject,handles);
 
 
@@ -269,8 +306,8 @@ function figure1_WindowButtonDownFcn(hObject, eventdata, handles)
 
 
 % --- Executes on slider movement.
-function slider1_Callback(hObject, eventdata, handles)
-% hObject    handle to slider1 (see GCBO)
+function synthVol_Callback(hObject, eventdata, handles)
+% hObject    handle to synthVol (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
@@ -279,12 +316,35 @@ function slider1_Callback(hObject, eventdata, handles)
 
 
 % --- Executes during object creation, after setting all properties.
-function slider1_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to slider1 (see GCBO)
+function synthVol_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to synthVol (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
 % Hint: slider controls usually have a light gray background.
 if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+
+
+% --- Executes on selection change in sampleSelectorMenu.
+function sampleSelectorMenu_Callback(hObject, eventdata, handles)
+% hObject    handle to sampleSelectorMenu (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: contents = cellstr(get(hObject,'String')) returns sampleSelectorMenu contents as cell array
+%        contents{get(hObject,'Value')} returns selected item from sampleSelectorMenu
+
+
+% --- Executes during object creation, after setting all properties.
+function sampleSelectorMenu_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to sampleSelectorMenu (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: popupmenu controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
 end
