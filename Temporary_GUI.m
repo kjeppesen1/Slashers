@@ -22,7 +22,7 @@ function varargout = Temporary_GUI(varargin)
 
 % Edit the above text to modify the response to help Temporary_GUI
 
-% Last Modified by GUIDE v2.5 30-May-2016 20:43:42
+% Last Modified by GUIDE v2.5 31-May-2016 09:55:24
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -185,15 +185,20 @@ pitch=440*2^((n-49)/12);
 % Set the sample rate to 44.1kHz
 fs=44100;
 
+synthVolume= get(handles.slider1,'Value');
+
+
 %create a sine wave
 t = linspace(0,synthDuration,44100*synthDuration); 
 synthArray = sin(pitch*2*pi*t);
 
 %if user chooses wave shape
 if waveShape== 1;
-    synthArray= synthArray;
+    synthArray= synthArray*synthVolume;
 elseif waveShape== 2;
-    synthArray= square(synthArray);          
+    synthArray= square(synthArray)*synthVolume;
+elseif waveShape ==3;
+    synthArray= sawtooth(synthArray)*synthVolume;
 end
 
     
@@ -261,3 +266,25 @@ function figure1_WindowButtonDownFcn(hObject, eventdata, handles)
 % hObject    handle to figure1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on slider movement.
+function slider1_Callback(hObject, eventdata, handles)
+% hObject    handle to slider1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'Value') returns position of slider
+%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+
+
+% --- Executes during object creation, after setting all properties.
+function slider1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
