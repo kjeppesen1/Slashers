@@ -206,37 +206,69 @@ end
 
 switch get(handles.sampleSelectorMenu,'Value');
     case 1
-        S1File= audiowrite('S1File.wav', synthArray,fs);
+        audiowrite('S1File.wav', synthArray,fs);
+        S1File= 'S1File.wav';
+        %set(handles.playS1,'String','Custom');
     case 2 
-        S2File= audiowrite('S2File.wav',synthArray,fs);
+        audiowrite('S2File.wav',synthArray,fs);
+        S2File= 'S2File.wav';
+        %set(handles.playS2,'String','Custom');
     case 3
-        S3File= audiowrite('S3File.wav',synthArray,fs);
+        audiowrite('S3File.wav',synthArray,fs);
+        S3File= 'S3File.wav';
+        %set(handles.playS3,'String','Custom');
     case 4
-        S4File= audiowrite('S4File.wav',synthArray,fs);
+        audiowrite('S4File.wav',synthArray,fs);
+        S4File= 'S4File.wav';
+        %set(handles.playS4,'String','Custom');
     case 5
-        S5File= audiowrite('S5File.wav',synthArray,fs);        
+        audiowrite('S5File.wav',synthArray,fs);
+        S5File= 'S5File.wav';
+        %set(handles.playS5,'String','Custom');
     case 6
-        S6File= audiowrite('S6File.wav',synthArray,fs);    
+        audiowrite('S6File.wav',synthArray,fs);
+        S6File= 'S6File.wav';
+        %set(handles.playS6,'String','Custom');
     case 7
-        S7File= audiowrite('S7File.wav',synthArray,fs);
+        audiowrite('S7File.wav',synthArray,fs);
+        S7File= 'S7File.wav';
+        %set(handles.playS7,'String','Custom';
     case 8
-        S8File= audiowrite('S8File.wav',synthArray,fs);
+        audiowrite('S8File.wav',synthArray,fs);
+        S8File= 'S8File.wav';
+        %set(handles.playS8,'String','Custom';
     case 9
-        S9File= audiowrite('S9File.wav',synthArray,fs);        
+        audiowrite('S9File.wav',synthArray,fs);
+        S9File= 'S9File.wav';
+        %set(handles.playS9,'String','Custom');
     case 10
-        S10File= audiowrite('S10File.wav',synthArray,fs);
+        audiowrite('S10File.wav',synthArray,fs);
+        S10File= 'S10File.wav';
+        %set(handles.playS10,'String','Custom');
     case 11
-        S11File= audiowrite('S11File.wav',synthArray,fs);        
+        audiowrite('S11File.wav',synthArray,fs);
+        S11File='S11File.wav';
+        %set(handles.playS11,'String','Custom');
     case 12
-        S12File= audiowrite('S12File.wav',synthArray,fs);  
+        audiowrite('S12File.wav',synthArray,fs);
+        S12File= 'S12File.wav';
+        %set(handles.playS12,'String','Custom');      
     case 13
-        S13File= audiowrite('S13File.wav',synthArray,fs);
+        audiowrite('S13File.wav',synthARray,fs);
+        S13File= 'S13File.wav';
+        %set(handles.playS13,'String','Custom');
     case 14
-        S14File= audiowrite('S14File.wav',synthArray,fs);
+        audiowrite('S14File.wav',synthArray,fs);
+        S14File= 'S14File.wav';
+        %set(handles.playS14,'String','Custom');     
     case 15
-        S15File= audiowrite('S15File.wav',synthArray,fs);        
+        audiowrite('S15File.wav',synthArray,fs); 
+        S15File= 'S15File.wav';
+        %set(handles.playS15,'String','Custom');
     case 16
-        S16File= audiowrite('S16File.wav',synthArray,fs); 
+        audiowrite('S16File.wav',synthArray,fs); 
+        S16File= 'S16File.wav';
+        %set(handles.play16,'String','Custom');
 end
     
 % If the preview checkbox is checked, play the tone
